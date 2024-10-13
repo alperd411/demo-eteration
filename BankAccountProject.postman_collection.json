@@ -1,0 +1,307 @@
+{
+	"info": {
+		"_postman_id": "1bd1f04c-d767-4cd3-a5d5-3db796bb2832",
+		"name": "BankAccountProject",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "38982043"
+	},
+	"item": [
+		{
+			"name": "Create account",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"accountNumber\":\"123\",\r\n    \"owner\":\"alper\",\r\n    \"balance\":10.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/account/v1"
+			},
+			"response": [
+				{
+					"name": "Create account",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"accountNumber\":\"123\",\r\n    \"owner\":\"alper\",\r\n    \"balance\":10.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/account/v1"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 13 Oct 2024 21:29:27 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 1,\n    \"accountNumber\": \"123\",\n    \"owner\": \"alper\",\n    \"balance\": 10,\n    \"createdDate\": \"Mon Oct 14 00:29:27 TRT 2024\",\n    \"transactions\": []\n}"
+				}
+			]
+		},
+		{
+			"name": "Get Account by accNumber",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "localhost:8080/account/v1/123"
+			},
+			"response": [
+				{
+					"name": "Get Account by accNumber",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": "localhost:8080/account/v1/123"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 13 Oct 2024 21:29:54 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"accountNumber\": \"123\",\n    \"owner\": \"alper\",\n    \"balance\": 60,\n    \"transactions\": [\n        {\n            \"date\": \"2024-10-13T21:29:39.288+00:00\",\n            \"type\": \"DepositTransaction\",\n            \"amount\": 100,\n            \"approvalCode\": \"a12e0e08-8e50-4eb5-9d34-fcc052866598\"\n        },\n        {\n            \"date\": \"2024-10-13T21:29:42.716+00:00\",\n            \"type\": \"WithdrawalTransaction\",\n            \"amount\": 100,\n            \"approvalCode\": \"97620bee-6cf1-4763-9537-198ce6ec8ca1\"\n        },\n        {\n            \"date\": \"2024-10-13T21:29:48.291+00:00\",\n            \"type\": \"DepositTransaction\",\n            \"amount\": 100,\n            \"approvalCode\": \"bb8030db-5f5a-4c8f-9d1b-14aac3072ca6\"\n        },\n        {\n            \"date\": \"2024-10-13T21:29:50.923+00:00\",\n            \"type\": \"PhoneBillPaymentTransaction\",\n            \"amount\": 50,\n            \"approvalCode\": \"2305f5a1-e70f-4006-ad9f-cbc1d7ef3fb5\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "Credit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\":100.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/account/v1/credit/123"
+			},
+			"response": [
+				{
+					"name": "Credit",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\":100.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/account/v1/credit/123"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 13 Oct 2024 21:29:48 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"Ok\",\n    \"approvalCode\": \"bb8030db-5f5a-4c8f-9d1b-14aac3072ca6\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Debit",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"amount\":100.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/account/v1/debit/123"
+			},
+			"response": [
+				{
+					"name": "Debit",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"amount\":100.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/account/v1/debit/123"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 13 Oct 2024 21:29:42 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"Ok\",\n    \"approvalCode\": \"97620bee-6cf1-4763-9537-198ce6ec8ca1\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Phone Bill Payment",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"serviceName\":\"Vodafone\",\r\n    \"phoneNumber\":\"5462956900\",\r\n    \"amount\":50.00\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "localhost:8080/account/v1/phoneBillPayment/123"
+			},
+			"response": [
+				{
+					"name": "Phone Bill Payment",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"serviceName\":\"Vodafone\",\r\n    \"phoneNumber\":\"5462956900\",\r\n    \"amount\":50.00\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "localhost:8080/account/v1/phoneBillPayment/123"
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 13 Oct 2024 21:29:50 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"Ok\",\n    \"approvalCode\": \"2305f5a1-e70f-4006-ad9f-cbc1d7ef3fb5\"\n}"
+				}
+			]
+		}
+	]
+}

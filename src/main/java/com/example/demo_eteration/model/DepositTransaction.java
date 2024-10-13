@@ -2,29 +2,26 @@ package com.example.demo_eteration.model;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.ToString;
 
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @EqualsAndHashCode(callSuper = true)
 @Data
 public class DepositTransaction extends Transaction {
 
-
+    private final String type = "DepositTransaction";
 
     public DepositTransaction(Double amount) {
         this.setAmount(amount);
 
     }
     @Override
-    public void executeTransaction(BankAccount account) {
-
-
+    public BankAccount executeTransaction(BankAccount account) {
+        account.setBalance(account.getBalance() + this.getAmount());
+        account.addTransactionToAccountHistory(this.buildSummary(this.type,account));
+        return account;
     }
 
-    @Override
-    public String toString() {
-        return "date: " + "\"" + this.getDate() + "\"" + "\namount: " + this.getAmount() +
-                "\n\"type\": \"DepositTransaction\"" + "\n\"approvalCode\":" + "\"" + this.getApprovalCode() + "\"";
-    }
 }

@@ -13,24 +13,40 @@ java {
 	}
 }
 
-configurations {
-	compileOnly {
-		extendsFrom annotationProcessor
-	}
-}
 
-repositories {
+
+	repositories {
 	mavenCentral()
 }
 
 dependencies {
-	"implementation 'org.springframework.boot:spring-boot-starter-data-jpa'"
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	compileOnly 'org.projectlombok:lombok'
-	"runtimeOnly 'org.postgresql:postgresql'"
+	runtimeOnly 'org.postgresql:postgresql'
 	annotationProcessor 'org.projectlombok:lombok'
+	implementation group: 'com.fasterxml.jackson.core', name: 'jackson-core', version: '2.18.0'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+	runtimeOnly 'com.h2database:h2'
+}
+
+configurations {
+	localH2Implementation.extendsFrom implementation
+	localH2RuntimeOnly.extendsFrom runtimeOnly
+
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+sourceSets {
+	localH2 {
+		compileClasspath += sourceSets.main.output
+		runtimeClasspath += sourceSets.main.output
+	}
+}
+configurations.localH2Implementation {
+	exclude group: 'org.postgresql', module: 'postgresql'
 }
 
 tasks.named('test') {
